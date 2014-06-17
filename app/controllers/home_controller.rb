@@ -6,8 +6,7 @@ class HomeController < ApplicationController
     name = params['xlsx'].original_filename
     directory = 'xlsx_files'
     path = File.join(directory, name)
-    binding.pry
-    File.open(path, "wb") { |file| file.write(params['xlsx'].read) }
+    # File.open(path, "wb") { |file| file.write(params['xlsx'].read) }
     render action: :index
   end
 end
