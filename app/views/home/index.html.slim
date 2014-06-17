@@ -1,0 +1,8 @@
+h1
+  | Сервис для распределения работ во времени
+= form_tag({ action: :upload }, multipart: true)
+  = label_tag 'xlsx', 'Выберите файл для обработки'
+  br
+  = file_field_tag 'xlsx'
+  br
+  = submit_tag 'Отправить на обработку'
