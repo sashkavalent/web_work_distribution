@@ -1,3 +1,4 @@
+ruby '2.1.1'
 source 'https://rubygems.org'
 
 
@@ -16,6 +17,7 @@ gem 'simple_form'
 gem 'pry'
 gem 'bootstrap-sass'
 gem 'rubyXL'
+gem "dropbox-api"
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 

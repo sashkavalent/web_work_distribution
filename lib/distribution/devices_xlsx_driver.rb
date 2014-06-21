@@ -12,7 +12,7 @@ class DevicesXLSXDriver
 
   def initialize(path_to_xlsx)
     @path_to_xlsx = path_to_xlsx
-    @workbook = RubyXL::Parser.parse(path_to_xlsx)
+    @workbook = RubyXL::Parser.parse(path_to_xlsx, skip_filename_check: true)
     @worksheet = @workbook[0]
     @table_start_line = find_line_by_text(DEVICE_COLUMN_NAMES.id)
     @table_end_line = find_line_by_text(END_OF_TABLE_LABEL)
@@ -37,7 +37,7 @@ class DevicesXLSXDriver
     devices
   end
 
-  def export_to_file(serialized_work_shedule, file_name)
+  def export_to_file(serialized_work_shedule, output_path)
     work_for_months = serialized_work_shedule[:work_for_months]
     devices_works = serialized_work_shedule[:devices_works]
 
@@ -51,7 +51,7 @@ class DevicesXLSXDriver
     (START_MONTH_COLUMN_NUMBER..last_column_number).each_with_index do |column_index, month_index|
       @worksheet.add_cell(@table_end_line, column_index, work_for_months[month_index])
     end
-    @workbook.write(file_name)
+    @workbook.write(output_path)
   end
 
   private

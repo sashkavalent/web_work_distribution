@@ -1,8 +1,16 @@
-h1
+= @text
+h1.row
   | Сервис для распределения работ во времени
 = form_tag({ action: :upload }, multipart: true)
+  = label_tag 'deep_level', 'Введите глубину обработки:'
+  = number_field_tag 'deep_level', nil, class: 'form-control'
   = label_tag 'xlsx', 'Выберите файл для обработки'
-  br
-  = file_field_tag 'xlsx'
-  br
-  = submit_tag 'Отправить на обработку'
+  = file_field_tag 'xlsx', class: 'btn btn-default'
+  = submit_tag 'Отправить на обработку', class: 'btn btn-default'
+.message
+- if @message.present?
+  = @message
+- elsif session[:file_link].present?
+  | Вы можете скачать выходной файл по&nbsp
+  = link_to 'ссылке', session[:file_link]['url']
+  | , действительной до #{Time.parse(session[:file_link]['expires']).strftime('%H:%M - %d.%m.%Y')} г.

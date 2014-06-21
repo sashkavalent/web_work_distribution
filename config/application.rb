@@ -11,7 +11,13 @@ module WebDistributionEnergo
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-
+    config.autoload_paths += %W(
+      #{config.root}/lib/distribution
+    )
+    Dropbox::API::Config.app_key    = '76tuj4f9sdw6hlo'
+    Dropbox::API::Config.app_secret = '1s22l9bhrg9olyz'
+    Dropbox::API::Config.mode       = "sandbox"
+    config.logger = Logger.new(STDOUT)
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'

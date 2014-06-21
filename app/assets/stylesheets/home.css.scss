@@ -1,15 +1,22 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-h1 {
-  text-align: center;
+
+.container {
+  position: fixed;
+  right: 25%;
+  left: 25%;
+  margin-right: 150px;
 }
-body {
-  margin: 0 20% 0 20%;
+.message{
+  margin-top: 20px;
 }
-input {
-  margin-top: 12px;
-}
-label {
-  margin-top: 10px;
+form {
+  margin-left: 3%;
+  input.form-control {
+    width: 27%;
+  }
+  label, input[type=submit] {
+    margin-top: 1%;
+  }
 }
