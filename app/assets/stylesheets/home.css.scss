@@ -3,20 +3,35 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .container {
-  position: fixed;
-  right: 25%;
-  left: 25%;
-  margin-right: 150px;
+  width: 60% !important;
 }
 .message{
   margin-top: 20px;
 }
 form {
-  margin-left: 3%;
+  margin-left: 6%;
   input.form-control {
-    width: 27%;
+    width: 40%;
   }
   label, input[type=submit] {
     margin-top: 1%;
+  }
+}
+.error {
+  color: red;
+}
+td, th {
+  border: 1px solid black;
+  text-align: center;
+  padding: 3px !important;
+}
+i {
+  margin-top: 70px;
+  &.table-header {
+    display: block;
+  }
+  &.copyright {
+    display: block;
+    margin-left: 25%;
   }
 }

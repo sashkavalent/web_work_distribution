@@ -1,16 +1,23 @@
-= @text
 h1.row
-  | Сервис для распределения работ во времени
+  = link_to 'Сервис для распределения работ во времени', :root
+
 = form_tag({ action: :upload }, multipart: true)
   = label_tag 'deep_level', 'Введите глубину обработки:'
-  = number_field_tag 'deep_level', nil, class: 'form-control'
-  = label_tag 'xlsx', 'Выберите файл для обработки'
-  = file_field_tag 'xlsx', class: 'btn btn-default'
+  = number_field_tag 'deep_level', nil, required: true, in: 0..20, class: 'form-control'
+  = label_tag 'xlsx', 'Выберите файл для обработки:'
+  = file_field_tag 'xlsx', required: true, class: 'btn btn-default form-control'
   = submit_tag 'Отправить на обработку', class: 'btn btn-default'
 .message
-- if @message.present?
+/ - if @message.present?
+p.error
   = @message
-- elsif session[:file_link].present?
-  | Вы можете скачать выходной файл по&nbsp
-  = link_to 'ссылке', session[:file_link]['url']
-  | , действительной до #{Time.parse(session[:file_link]['expires']).strftime('%H:%M - %d.%m.%Y')} г.
+/ - elsif session[:file_link].present?
+/   | Вы можете скачать выходной файл по&nbsp
+  / = link_to 'ссылке', session[:file_link]['url']
+  / | , действительной до #{Time.parse(session[:file_link]['expires']).strftime('%H:%M - %d.%m.%Y')} г.
+i.table-header
+  | Формат файла должен быть таким:
+div
+  = render 'table_example'
+i.copyright
+  | © 2014 Специально для ООО "ЭнергоКипНаладка"

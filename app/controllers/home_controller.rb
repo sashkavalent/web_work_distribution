@@ -1,7 +1,5 @@
 class HomeController < ApplicationController
   def index
-    File.write('hello.txt', 'blablabla 123')
-    @text = File.read('hello.txt')
   end
 
   def upload
@@ -18,8 +16,10 @@ class HomeController < ApplicationController
       # client = Dropbox::API::Client.new(:token  => 'hz9dmkvlle04z063', :secret => 'tztktfadkhixkeb')
       # client.upload 'export.xlsx', File.read('export.xlsx')
       # session[:file_link] = client.ls.first.direct_url
-    rescue NoMethodError => e
+    rescue Exception => e
       @message = 'Проверьте правильность формата файла.'
+      render 'index'
+      return
     end
     output_path = root_path + output_path
     send_data File.read(Rails.root.to_s + output_path), filename: file_name
