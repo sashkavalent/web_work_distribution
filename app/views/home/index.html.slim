@@ -2,8 +2,8 @@ h1.row
   = link_to 'Сервис для распределения работ во времени', :root
 
 = form_tag({ action: :upload }, multipart: true)
-  = label_tag 'deep_level', 'Введите глубину обработки:'
-  = number_field_tag 'deep_level', nil, required: true, in: 0..20, class: 'form-control'
+  = label_tag 'deep_level', 'Введите глубину обработки (можете пропустить):'
+  = number_field_tag 'deep_level', nil, required: true, in: 0..20, class: 'form-control', value: 6
   = label_tag 'xlsx', 'Выберите файл для обработки:'
   = file_field_tag 'xlsx', required: true, class: 'btn btn-default form-control'
   = submit_tag 'Отправить на обработку', class: 'btn btn-default'
